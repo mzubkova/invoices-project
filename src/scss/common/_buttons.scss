@@ -1,0 +1,21 @@
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  font-family: $btn-ff;
+  font-size: 1.4rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in;
+
+  &--default {
+    background-color: #5e0f9b;
+    border-radius: 3px;
+    color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    width: 130px;
+  }
+}
+
+

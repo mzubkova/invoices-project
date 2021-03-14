@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoices</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="invoices d-flex flex-column">
+      <div class="container">
+        <h1 class="invoices__title">Invoices</h1>
+        <div class="invoices-actions">
+          <h2 class="invoices-actions__text">Actions</h2>
+          <a href="#" class="btn btn--default js-open-modal" data-modal="1"
+            >Add new</a
+          >
+        </div>
+
+        <div class="modal" data-modal="1">
+          <svg
+            class="modal__cross js-modal-close"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"
+            />
+          </svg>
+          <div class="form-section" id="">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h1 class="card-title">Create invoices</h1>
+                  <form
+                    class="card-form d-flex justify-content-between"
+                    name="addTask"
+                  >
+                    <div class="form-control__input form-control__input--number">
+                      <label for="number" class="form-control__label"
+                        >Number</label
+                      >
+                      <input
+                        type="text"
+                        name="number"
+                        id="number"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-control__input form-control__input--date">
+                      <label for="date-created">Invoice Date</label>
+                      <input
+                        type="text"
+                        name="date-created"
+                        id="date-created"
+                        class="form-control"
+                        placeholder="Select date"
+                      />
+                    </div>
+                    <div class="form-control__input form-control__input--date">
+                      <label for="date-supplied">Supply Date</label>
+                      <input
+                        type="text"
+                        name="date-supplied"
+                        id="date-supplied"
+                        class="form-control"
+                        placeholder="Select date"
+                      />
+                    </div>
+                    <div class="form-control__textarea">
+                      <label for="comment">Comment</label>
+                      <textarea
+                        type="text"
+                        name="comment"
+                        id="comment"
+                        class="form-control"
+                      ></textarea>
+                    </div>
+                    <div class="form-control__button">
+                      <button
+                        type="submit"
+                        class="btn btn--default"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="invoices-lists tasks-list-section">
+          <h2 class="invoices-lists__title">Invoices</h2>
+          <div class="container">
+            <div class="row">
+              <div class="col col-3">
+                <h3 class="invoices-lists__desc">Create</h3>
+              </div>
+              <div class="col col-3">
+                <h3 class="invoices-lists__desc">No</h3>
+              </div>
+              <div class="col col-3">
+                <h3 class="invoices-lists__desc">Supply</h3>
+              </div>
+              <div class="col col-3">
+                <h3 class="invoices-lists__desc">Comment</h3>
+              </div>
+              <div class="invoices-lists__table list-group" id="table"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay js-overlay-modal"></div>
+    <script src="js/index.js"></script>
+    <script src="js/modal.js"></script>
+  </body>
+</html>
