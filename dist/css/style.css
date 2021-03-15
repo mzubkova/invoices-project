@@ -89,6 +89,20 @@ p {
     margin: 10px 0;
     padding: 15px;
     width: 130px; }
+  .btn--remove {
+    background-color: #e5d0f5;
+    height: 100%;
+    position: relative;
+    width: 170px; }
+    .btn--remove::after {
+      background: url(../images/remove-icon.svg) no-repeat;
+      content: '';
+      height: 40px;
+      position: absolute;
+      -webkit-transform: translate(-15px, -15px);
+          -ms-transform: translate(-15px, -15px);
+              transform: translate(-15px, -15px);
+      width: 30px; }
 
 .card {
   background-color: #fff;
@@ -134,27 +148,28 @@ p {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   width: 100%; }
   .form-control__input {
+    cursor: pointer;
     height: 40px;
     margin: 20px 0 40px;
     position: relative;
     width: 500px; }
-    .form-control__input--date::after {
+    .form-control__input--date::before {
       background: url(../images/calendar-icon.svg) no-repeat;
       content: '';
       height: 40px;
       position: absolute;
-      -webkit-transform: translate(460px, -50px);
-          -ms-transform: translate(460px, -50px);
-              transform: translate(460px, -50px);
+      -webkit-transform: translate(460px, 35px);
+          -ms-transform: translate(460px, 35px);
+              transform: translate(460px, 35px);
       width: 20px; }
-    .form-control__input--number::after {
+    .form-control__input--number::before {
       background: url(../images/settings-icon.svg) no-repeat;
       content: '';
       height: 40px;
       position: absolute;
-      -webkit-transform: translate(460px, -50px);
-          -ms-transform: translate(460px, -50px);
-              transform: translate(460px, -50px);
+      -webkit-transform: translate(460px, 35px);
+          -ms-transform: translate(460px, 35px);
+              transform: translate(460px, 35px);
       width: 20px; }
   .form-control__label {
     text-align: left; }
@@ -175,6 +190,11 @@ p {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  background: none;
+  color: transparent;
+  z-index: 1; }
 
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
@@ -1344,6 +1364,8 @@ p {
       color: #251125;
       font-size: 1.8rem;
       margin-bottom: 10px; }
+    .invoices-lists__col {
+      padding: 15px 0; }
     .invoices-lists__desc {
       color: #360c37;
       font-size: 1.6rem; }

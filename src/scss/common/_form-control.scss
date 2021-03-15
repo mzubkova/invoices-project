@@ -17,26 +17,27 @@
   width: 100%;
 
   &__input {
+    cursor: pointer;
     height: 40px;
     margin: 20px 0 40px;
     position: relative;
     width: 500px;
 
-    &--date::after {
+    &--date::before {
       background: url(../images/calendar-icon.svg) no-repeat;
       content: '';
       height: 40px;
       position: absolute;
-      transform: translate(460px, -50px);
+      transform: translate(460px, 35px);
       width: 20px;
     }
 
-    &--number::after {
+    &--number::before {
       background: url(../images/settings-icon.svg) no-repeat;
       content: '';
       height: 40px;
       position: absolute;
-      transform: translate(460px, -50px);
+      transform: translate(460px, 35px);
       width: 20px;
     }
   }
@@ -65,4 +66,10 @@
 .list-group-item {
   border-bottom: 2px solid #e0c7ef;
   display: flex;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  background: none;
+  color: transparent;
+  z-index: 1;
 }

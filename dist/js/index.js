@@ -1,4 +1,4 @@
-const tasks = [
+const invoices = [
   {
     _id: "5ba37c48185c0c98e6880bed",
     number: 63805,
@@ -74,14 +74,14 @@ const tasks = [
       "incididunt esse amet reprehenderit in exercitation in incididunt exercitation aliqua",
   },
 ];
-(function (arrOfTasks) {
-  const objOfTasks = arrOfTasks.reduce((acc, task) => {
+(function (arrOfInvoices) {
+  const objOfInvoices = arrOfInvoices.reduce((acc, task) => {
     acc[task._id] = task;
     return acc;
   }, {});
 
   const listContainer = document.querySelector(
-    ".tasks-list-section .list-group"
+    ".invoices-list-section .list-group"
   );
   const form = document.forms["addTask"];
   const inputNumber = form.elements["number"];
@@ -89,18 +89,19 @@ const tasks = [
   const inputSupply = form.elements["date-supplied"];
   const inputComment = form.elements["comment"];
 
-  renderAllTasks(objOfTasks);
+  renderAllInvoices(objOfInvoices);
   form.addEventListener("submit", onFormSubmitHandler);
+  listContainer.addEventListener("click", onDeletehandler);
 
-  function renderAllTasks(tasksList) {
-    if (!tasksList) {
+  function renderAllInvoices(invoicesList) {
+    if (!invoicesList) {
       console.error("Pass the list of invoices!");
       return;
     }
 
     const fragment = document.createDocumentFragment();
-    Object.values(tasksList).forEach((task) => {
-      const tr = listItemTemplate(task);
+    Object.values(invoicesList).forEach((invoice) => {
+      const tr = listItemTemplate(invoice);
       fragment.appendChild(tr);
     });
     listContainer.appendChild(fragment);
@@ -118,7 +119,13 @@ const tasks = [
 
       for (let i = 1; i <= 1; i++) {
         let div = document.createElement("div");
-        div.append(spanCreated, spanNumber, spanSupplied, spanComment);
+        div.append(
+          spanCreated,
+          spanNumber,
+          spanSupplied,
+          spanComment,
+          deleteBtn
+        );
         div.classList.add("invoices-lists__table-col");
         result.push(div);
       }
@@ -143,6 +150,9 @@ const tasks = [
     spanComment.textContent = comment;
     spanComment.classList.add("col", "col-3");
 
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("btn--remove");
+
     div.append(...getListInvoices());
 
     return div;
@@ -161,7 +171,7 @@ const tasks = [
     }
 
     if (
-      !/^[0-9]{3,}$/.test(numberValue && dateCreateValue && dateSupplyValue)
+      !/^[0-9_-]{3,}$/.test(numberValue && dateCreateValue && dateSupplyValue)
     ) {
       alert("Please only enter numeric characters!(0-9)");
       return;
@@ -192,8 +202,30 @@ const tasks = [
       _id: `task-${Math.random()}`,
     };
 
-    objOfTasks[newTask._id] = newTask;
+    objOfInvoices[newTask._id] = newTask;
 
     return { ...newTask };
   }
-})(tasks);
+
+  function deleteTask(id) {
+    const { number } = objOfInvoices[id];
+    const isConfirm = confirm(`You want to delete task: ${number}`);
+    if (!isConfirm) return isConfirm;
+    delete objOfInvoices[id];
+    return isConfirm;
+  }
+
+  function deleteTaskFromHtml(confirmed, el) {
+    if (!confirmed) return;
+    el.remove();
+  }
+
+  function onDeletehandler({ target }) {
+    if (target.classList.contains("btn--remove")) {
+      const parent = target.closest("[data-task-id]");
+      const id = parent.dataset.taskId;
+      const confirmed = deleteTask(id);
+      deleteTaskFromHtml(confirmed, parent);
+    }
+  }
+})(invoices);

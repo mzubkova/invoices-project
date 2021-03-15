@@ -32,6 +32,10 @@
       margin-bottom: 10px;
     }
 
+    &__col {
+      padding: 15px 0;
+    }
+
     &__desc {
       color: $text-purple;
       font-size: 1.6rem;
@@ -51,3 +55,4 @@
     }
   }
 }
+

@@ -16,6 +16,22 @@
     padding: 15px;
     width: 130px;
   }
+
+  &--remove {
+    background-color: $bg-light;
+    height: 100%;
+    position: relative;
+    width: 170px;
+
+    &::after {
+      background: url(../images/remove-icon.svg) no-repeat;
+      content: '';
+      height: 40px;
+      position: absolute;
+      transform: translate(-15px, -15px);
+      width: 30px;
+    }
+  }
 }
 
 
