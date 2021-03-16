@@ -16,3 +16,4 @@ Simple SPA for displaying and adding invoices
 - SCSS
 - Gulp
 - Node-SASS
+- Axios
