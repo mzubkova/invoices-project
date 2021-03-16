@@ -93,11 +93,11 @@ p {
     background-color: #e5d0f5;
     height: 100%;
     position: relative;
-    width: 170px; }
+    width: 100px; }
     .btn--remove::after {
       background: url(../images/remove-icon.svg) no-repeat;
       content: '';
-      height: 40px;
+      height: 20px;
       position: absolute;
       -webkit-transform: translate(-15px, -15px);
           -ms-transform: translate(-15px, -15px);
@@ -1381,3 +1381,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
         display: -ms-flexbox;
         display: flex;
         width: 100%; }
+        .invoices-lists__table-col .col:nth-child(1) {
+          padding: 15px 0; }
+        .invoices-lists__table-col .col:nth-child(2),
+        .invoices-lists__table-col .col:nth-child(3),
+        .invoices-lists__table-col .col:nth-child(4) {
+          padding: 15px 20px; }
